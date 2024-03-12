@@ -1,0 +1,12 @@
+.image-prop-container {
+    overflow: hidden;
+    /* height specified in inline css style */
+    /* transform: translateY(100px);
+    position: relative; */
+}
+
+.image-prop {
+    height: 200px;
+    overflow: hidden;
+    fill: red;
+}

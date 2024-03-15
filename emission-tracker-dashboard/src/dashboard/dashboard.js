@@ -22,7 +22,7 @@ export default function Dashboard() {
                     <button onClick={openModal}>
                         Vehicle
                     </button>
-                    <Category isOpen={isModalOpen} onClose={closeModal} />
+                    <Category isOpen={isModalOpen} onClose={closeModal} category={"Vehicle"} userId={"Disha"}/>
                     </div>
                     <div className="basis-1/4 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">Electricity</div>
                 </div>

@@ -32,7 +32,7 @@ export default function PieChart()
           plugins: {
             title: {
               display: true,
-              text: "Users Gained between 2016-2020"
+              text: "Carbon Emissions Today"
             }
           }
         }}

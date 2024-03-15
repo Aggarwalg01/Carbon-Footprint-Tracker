@@ -16,6 +16,7 @@ export default function Dashboard() {
   // carbon emission calculate donly for first four values
   return (
     <div className="bg-slate-900 p-10">
+      <h1 className="text-5xl text-white font-bold py-10">Emission Tracking Dashboard</h1>
       <div className="bg-white rounded-lg p-5">
         <div className="flex flex-row">
           <div className="basis-1/4 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">

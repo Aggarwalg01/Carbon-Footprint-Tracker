@@ -8,10 +8,10 @@ function App() {
   
   return (
     <div className="App">
-      {/* <Dashboard />
-      <FootprintDiv fillPercentage={50}/> */}
-      <UserProfile /> 
       {/* <Dashboard /> */}
+      {/* <FootprintDiv fillPercentage={50}/> */}
+      <UserProfile /> 
+      <Dashboard />
     </div>
   );
 }

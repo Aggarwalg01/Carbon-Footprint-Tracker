@@ -8,73 +8,93 @@ export default function Category({ isOpen, onClose , category, userId}) {
     //         <alert message="category" />
     //     </div>
     // );
-    const [distance, setDistance] = useState(0);
+    const [energy, setDistance] = useState(0);
     if (!isOpen) return null;
     
     const handleInputChange = (event) => {
         setDistance(event.target.value);
       };
     function updateValue() {
-        var authToken = "QDMV9AG3NJ47S6GV4HP0BY65X71R"
-        /// TRAVEL
-        const url = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=SmallDieselCar&distance=${distance}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
-                'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
-            }
-        };
+        //  TRAVEL
+        // const url = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=SmallDieselCar&distance=${distance}`;
+        // const options = {
+        //     method: 'GET',
+        //     headers: {
+        //         'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+        //         'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
+        //     }
+        // };
 
-        /// VEHICLE 
-        // const url = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${vehicle}&distance=1000`
+        /// VEHICLE (CAR) - need to mention the type of car -- Ex-  SmallDieselCar 
+        // const url = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=${vehicle}&distance=100`
+        // const options = {
+        //     method: 'GET',
+        //     headers: {
+        //         'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+        //         'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
+        //     }
+        // };
 
         /// FOOD
-        /*
-         const url = `https://foodprint.p.rapidapi.com/api/foodprint/name/${name}`;
-        const options = {
-            method: 'GET',
-            headers: {
-                 'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
-    'X-RapidAPI-Host': 'foodprint.p.rapidapi.com'
-            }
-        };
-         */
+        
+    //      const url = `https://foodprint.p.rapidapi.com/api/foodprint/name/${name}`;
+    //     const options = {
+    //         method: 'GET',
+    //         headers: {
+    //              'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+    // 'X-RapidAPI-Host': 'foodprint.p.rapidapi.com'
+    //         }
+    //     };
+         
         /// ELECTRICITY
-        // fetch("https://api.climatiq.io/data/v1/estimate",
-        // {
-        //     method: "POST",
-        //     headers: {
-        //         'Authorization': `Bearer ${authToken}`,
-        //     },
-        //     body: JSON.stringify({
-        //         "emission_factor": {
-        //             "activity_id": "electricity-supply_grid-source_total_supplier_mix",
-        //             "data_version": "^9"
-        //            },
-        //           "parameters": {
-        //             "energy": 100,
-        //             "energy_unit": "kWh"
-        //           }
-        //     })
-        // },
-        // )
+        var authToken = "QDMV9AG3NJ47S6GV4HP0BY65X71R" //Put the key in .env
+        const url = "https://api.climatiq.io/data/v1/estimate";
+        const options = {
+            method: "POST",
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+            },
+            body: JSON.stringify({
+                "emission_factor": {
+                    "activity_id": "electricity-supply_grid-source_total_supplier_mix",
+                    "data_version": "^9"
+                   },
+                  "parameters": {
+                    "energy": parseInt(energy),
+                    "energy_unit": "kWh"
+                  }
+            })
+        }
+        
         fetch(url,options).then(async (res) => {
             var data;
             console.log(data = await res.json());
             var date = new Date();
-            const date1 = date.getDate()
+            const date1 = date.getDate() + ':' + ((date.getMonth()/10).toFixed(0) == 0 ? "0" + date.getMonth() : date.getMonth() )+ ':' + date.getFullYear() 
             const time = date.getHours() 
             + ':' + date.getMinutes() 
             + ":" + date.getSeconds();
             console.log(typeof(db))
+
+            // TRAVEL , VEHICLE
+            // var val = data.carbonEquivalent
+            
+            // FOOD
+            // var val = data[0].footprint
+
+            //ELECTRICITY
+            var val = data.co2e
             setDoc(doc(db, userId,category), {
             [date1] : {
-                  [time] : data.carbonEquivalent || null
+                  [time] : val || null
                 }
               }).then((res) =>{console.log(res)}).catch((e) => console.log(e));
             await onClose();
         }).catch((e) => {console.log(e)})
+
+        // Storage in database - collection - user name => document - category(travel etc) => {
+        // date on which data is pushed => time of update => value of carbon emission
+        // }
     }
 
     return (

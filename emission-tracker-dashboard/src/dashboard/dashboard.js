@@ -24,18 +24,18 @@ export default function Dashboard() {
           <div className="basis-1/2">
             <div className="flex flex-row">
               <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-                <button onClick={() => openModal('Vehicle')}>Vehicle</button>
+                <button onClick={() => openModal('vehicle')}>Vehicle</button>
               </div>
               <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-                <button onClick={() => openModal('Electricity')}>Electricity</button>
+                <button onClick={() => openModal('electricity')}>Electricity</button>
               </div>
             </div>
             <div className="flex flex-row">
               <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-                <button onClick={() => openModal('Travel')}>Travel</button>
+                <button onClick={() => openModal('travel')}>Travel</button>
               </div>
               <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-                <button onClick={() => openModal('Food')}>Food</button>
+                <button onClick={() => openModal('food')}>Food</button>
               </div>
             </div>
             <div className="flex flex-row">

@@ -119,7 +119,7 @@ setData(foodUrl,foodOptions,userId,category,0)
                 <h2 className="text-2xl mb-4">Update for today</h2>
                 <form>
                     <input type="text" onChange={handleInputChange} className="text-base" placeholder="Enter the updated value" /><br/>
-                    <input type="text" hidden={!(category=="Vehicle")} onChange={handleVehicleChange} className="text-base" placeholder="Vehicle Type" /><br/>
+                    <input type="text" hidden={!(category=="vehicle")} onChange={handleVehicleChange} className="text-base" placeholder="Vehicle Type" /><br/>
                 </form>
                 <button onClick={updateValue} className="bg-blue-500 text-white mt-4 py-2 px-4 rounded text-lg">
                     Close

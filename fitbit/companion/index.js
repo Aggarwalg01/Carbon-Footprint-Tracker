@@ -52,3 +52,11 @@ function restoreSettings() {
 messaging.peerSocket.onopen = () => {
   restoreSettings();
 };
+
+/*
+Client ID
+    289920628380-80l0pqp96lmrsdkr5utjl70t6e7n53bv.apps.googleusercontent.com
+
+Client secret
+    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
+*/

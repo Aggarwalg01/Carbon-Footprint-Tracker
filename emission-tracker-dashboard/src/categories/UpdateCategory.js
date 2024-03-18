@@ -4,10 +4,15 @@ import { db } from '../firestore/firebase';
 
 export default function Category({ isOpen, onClose, category, userId }) {
     const [data, setEnergy] = useState(0);
+    const [vehicle, setVehicleType] = useState(0);
+    
     if (!isOpen) return null;
 
     const handleInputChange = (event) => {
         setEnergy(event.target.value);
+    };
+    const handleVehicleChange = (event) => {
+        setVehicleType(event.target.value);
     };
 
     async function setData(url,options,userId,category,val) {
@@ -63,7 +68,7 @@ export default function Category({ isOpen, onClose, category, userId }) {
                 break;
 
             case 'vehicle':
-                const vehicleUrl =  `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${vehicle}&distance=100`
+                const vehicleUrl =  `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${data}&distance=${vehicle}`
                 const vehicleOptions  = {
                         method: 'GET',
                         headers: {
@@ -77,7 +82,7 @@ export default function Category({ isOpen, onClose, category, userId }) {
                 break;
 
             case 'food':
-                const foodUrl = `https://foodprint.p.rapidapi.com/api/foodprint/name/${foodName}`;
+                const foodUrl = `https://foodprint.p.rapidapi.com/api/foodprint/name/${data}`;
                 const foodOptions= {
                             method: 'GET',
                             headers: {
@@ -96,7 +101,7 @@ setData(foodUrl,foodOptions,userId,category,0)
                     headers: { 'Authorization': `Bearer ${authToken}` },
                     body: JSON.stringify({
                         "emission_factor": { "activity_id": "electricity-supply_grid-source_total_supplier_mix", "data_version": "^9" },
-                        "parameters": { "energy": parseInt(energy), "energy_unit": "kWh" }
+                        "parameters": { "energy": parseInt(data), "energy_unit": "kWh" }
                     })
                 };
                 setData(electricityUrl,electricityOptions,userId,category,0)
@@ -114,6 +119,7 @@ setData(foodUrl,foodOptions,userId,category,0)
                 <h2 className="text-2xl mb-4">Update for today</h2>
                 <form>
                     <input type="text" onChange={handleInputChange} className="text-base" placeholder="Enter the updated value" /><br/>
+                    <input type="text" hidden={!(category=="Vehicle")} onChange={handleVehicleChange} className="text-base" placeholder="Vehicle Type" /><br/>
                 </form>
                 <button onClick={updateValue} className="bg-blue-500 text-white mt-4 py-2 px-4 rounded text-lg">
                     Close

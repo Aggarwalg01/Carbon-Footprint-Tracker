@@ -1,11 +1,14 @@
 import "../index.css";
 import Category from "../categories/UpdateCategory.js";
 import { useState } from "react";
-
+import footprintSvg from './footprint.svg'; // Import the SVG file
+import FootprintDiv from "./footprintDiv";
 export default function Dashboard() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
-  const openModal = () => {
+  const openModal = (category) => {
+    setSelectedCategory(category);
     setModalOpen(true);
   };
 
@@ -13,56 +16,44 @@ export default function Dashboard() {
     setModalOpen(false);
   };
 
-  // carbon emission calculate donly for first four values
   return (
     <div className="bg-slate-900 p-10">
       <h1 className="text-5xl text-white font-bold py-10">Emission Tracking Dashboard</h1>
       <div className="bg-white rounded-lg p-5">
         <div className="flex flex-row">
-          <div className="basis-1/4 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-            <button onClick={openModal}>Vehicle</button>
-            <Category
-              isOpen={isModalOpen}
-              onClose={closeModal}
-              category={"Vehicle"} /* send the category we are calculating */
-              userId={"Disha"} /* send username or userid to identify user */
-            />
+          <div className="basis-1/2">
+            <div className="flex flex-row">
+              <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
+                <button onClick={() => openModal('Vehicle')}>Vehicle</button>
+              </div>
+              <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
+                <button onClick={() => openModal('Electricity')}>Electricity</button>
+              </div>
+            </div>
+            <div className="flex flex-row">
+              <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
+                <button onClick={() => openModal('Travel')}>Travel</button>
+              </div>
+              <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
+                <button onClick={() => openModal('Food')}>Food</button>
+              </div>
+            </div>
+            <div className="flex flex-row">
+              <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
+                <button onClick={() => openModal('Water')}>Water</button>
+              </div>
+              <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
+                <button onClick={() => openModal('Waste')}>Waste</button>
+              </div>
+            </div>
           </div>
-          <div className="basis-1/4 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-            Electricity
+          <div className="basis-1/2">
+            {/*<img src={footprintSvg} alt="Footprint" className="w-full" /> {/* Use footprint.svg */}
+            <FootprintDiv fillPercentage={80} />
           </div>
         </div>
-        <div className="flex flex-row">
-          <div className="basis-1/4 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-            Travel
-          </div>
-          <div className="basis-1/4 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-            Food
-          </div>
-        </div>
-        <div className="flex flex-row">
-          <div className="basis-1/4 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-            Water
-          </div>
-          <div className="basis-1/4 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl">
-            Waste
-          </div>
-        </div>
-        {/* <div className="flex flex-row">
-                    <button onClick={() => {
-                        return <Category name="" />
-                    }}><div className="basis-1/4 bg-gray-800 text-white p-10 rounded-lg mt-5 mr-5 font-medium text-2xl">Garden</div></button>
-                    <button onClick={() => {
-                        return <Category name="" />
-                    }}><div className="basis-1/4 bg-rose-500  p-10 rounded-lg mt-5 mr-5 font-medium text-2xl">Walk</div></button>
-                </div> */}
-        {/* <div>
-                    <button onClick={openModal} className="basis-1/4 bg-gray-800 text-white p-10 rounded-lg mt-5 mr-5 font-medium text-2xl">
-                        Open Modal
-                    </button>
-                    <Category isOpen={isModalOpen} onClose={closeModal} />
-                </div> */}
       </div>
+      <Category isOpen={isModalOpen} onClose={closeModal} category={selectedCategory} userId={"Disha"} />
     </div>
   );
 }

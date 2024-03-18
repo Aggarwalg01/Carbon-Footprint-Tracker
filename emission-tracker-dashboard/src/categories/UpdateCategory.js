@@ -3,34 +3,89 @@ import { setDoc, doc } from "firebase/firestore";
 import { db } from '../firestore/firebase';
 
 export default function Category({ isOpen, onClose, category, userId }) {
-    const [energy, setEnergy] = useState(0);
-    const [vehicle, setVehicle] = useState('');
-    const [foodName, setFoodName] = useState('');
-    const [electricity, setElectricity] = useState('');
+    const [data, setEnergy] = useState(0);
     if (!isOpen) return null;
 
     const handleInputChange = (event) => {
         setEnergy(event.target.value);
     };
 
-    function updateValue() {
+    async function setData(url,options,userId,category,val) {
+        fetch(url,options).then(async (res) => {
+            var data;
+            console.log(data = await res.json());
+            switch (category){
+                case 'travel':
+                    val = data.carbonEquivalent;
+                    break;
+                case 'vehicle':
+                    val = data.carbonEquivalent;
+                    break;
+                case 'food':
+                    val = data[0].footprint
+                    break;
+                case 'electricity':
+                    val = data.co2e;
+                    break;
+                default:
+                    break;
+            }
+                   
+            var date = new Date();
+            const date1 = date.getDate()
+            const time = date.getHours() 
+            + ':' + date.getMinutes() 
+            + ":" + date.getSeconds();
+            console.log(typeof(db))
+            setDoc(doc(db, userId,category), {
+            [date1] : {
+                  [time] : val || null
+                }
+              }).then((res) =>{console.log(res)}).catch((e) => console.log(e));
+            await onClose();
+        }).catch((e) => {console.log(e)})
+    }
+    
+
+    async function updateValue() {
+        console.log(category)
         switch (category) {
             case 'travel':
-                const travelUrl = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=${vehicle}&distance=${energy}`;
-                const travelOptions = { method: 'GET', headers: { /* Headers */ } };
-                fetch(travelUrl, travelOptions).then(/* Handle response */).catch(/* Handle error */);
+                const travelUrl =  `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=SmallDieselCar&distance=${data}`;
+                const travelOptions = {
+                    method: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+                        'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
+                    }
+                };
+                setData(travelUrl,travelOptions,userId,category,0);
                 break;
 
             case 'vehicle':
-                const vehicleUrl = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=${vehicle}&distance=100`;
-                const vehicleOptions = { method: 'GET', headers: { /* Headers */ } };
-                fetch(vehicleUrl, vehicleOptions).then(/* Handle response */).catch(/* Handle error */);
+                const vehicleUrl =  `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${vehicle}&distance=100`
+                const vehicleOptions  = {
+                        method: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+                            'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
+                        }
+                    };
+            
+            
+                setData(vehicleUrl,vehicleOptions,userId,category,0)
                 break;
 
             case 'food':
                 const foodUrl = `https://foodprint.p.rapidapi.com/api/foodprint/name/${foodName}`;
-                const foodOptions = { method: 'GET', headers: { /* Headers */ } };
-                fetch(foodUrl, foodOptions).then(/* Handle response */).catch(/* Handle error */);
+                const foodOptions= {
+                            method: 'GET',
+                            headers: {
+                                 'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+                    'X-RapidAPI-Host': 'foodprint.p.rapidapi.com'
+                            }
+                        };
+setData(foodUrl,foodOptions,userId,category,0)
                 break;
 
             case 'electricity':
@@ -44,12 +99,13 @@ export default function Category({ isOpen, onClose, category, userId }) {
                         "parameters": { "energy": parseInt(energy), "energy_unit": "kWh" }
                     })
                 };
-                fetch(electricityUrl, electricityOptions).then(/* Handle response */).catch(/* Handle error */);
+                setData(electricityUrl,electricityOptions,userId,category,0)
                 break;
 
             default:
                 break;
         }
+        await onClose();
     }
 
     return (
@@ -59,7 +115,7 @@ export default function Category({ isOpen, onClose, category, userId }) {
                 <form>
                     <input type="text" onChange={handleInputChange} className="text-base" placeholder="Enter the updated value" /><br/>
                 </form>
-                <button onClick={() => { onClose(); }} className="bg-blue-500 text-white mt-4 py-2 px-4 rounded text-lg">
+                <button onClick={updateValue} className="bg-blue-500 text-white mt-4 py-2 px-4 rounded text-lg">
                     Close
                 </button>
             </div>

@@ -63,7 +63,7 @@ export default function Category({ isOpen, onClose, category, userId }) {
                 break;
 
             case 'vehicle':
-                const vehicleUrl =  `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${vehicle}&distance=100`
+                const vehicleUrl =  `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${energy}&distance=100`
                 const vehicleOptions  = {
                         method: 'GET',
                         headers: {
@@ -77,7 +77,7 @@ export default function Category({ isOpen, onClose, category, userId }) {
                 break;
 
             case 'food':
-                const foodUrl = `https://foodprint.p.rapidapi.com/api/foodprint/name/${foodName}`;
+                const foodUrl = `https://foodprint.p.rapidapi.com/api/foodprint/name/${energy}`;
                 const foodOptions= {
                             method: 'GET',
                             headers: {

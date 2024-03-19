@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-
+import './styles.css';
 export default function Page() {
   const [inputText, setInputText] = useState('');
   const [generatedText, setGeneratedText] = useState('');
@@ -79,7 +79,7 @@ export default function Page() {
     <>
       <div className="page-main flex flex-col justify-top items-center h-screen">
         <h2 className="page-heading text-4xl font-bold tracking-tight text-white sm:text-6xl">
-          Enter Product Idea
+          Chat Bot
         </h2>
         <div className=" " style={{ margin: '1vh 0px' }}>
           <div className="input-prompt-area">

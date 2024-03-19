@@ -1,5 +1,6 @@
 "use client";
 import Spinner from "@/components/Spinner";
+import Link from 'next/link'
 import {
   ClerkLoaded,
   ClerkLoading,
@@ -17,6 +18,7 @@ import { CiCircleCheck, CiHeart } from "react-icons/ci";
 import { IoEllipsisVertical } from "react-icons/io5";
 
 export default function Page() {
+
   const { user } = useUser();
   return (
     <div className="min-h-screen bg-[#e8e6d7] py-6 flex flex-col gap-6 px-4 lg:px-16 md:px-10 sm:px-8">
@@ -133,10 +135,10 @@ export default function Page() {
               </div>
               <div className="h-full w-full bg-[#e0dfce] rounded-xl flex items-center justify-evenly">
                 <span className="text-xs bg-white rounded-lg p-1 px-2">
-                  Fullfiled
+                <Link href="/dashboard">Dashboard</Link>
                 </span>
                 <span className="text-xs bg-white rounded-lg p-1 px-2">
-                  Completed
+                <Link href="/user-profile">User Profile</Link>
                 </span>
                 <span className="text-xs bg-white rounded-lg p-1 px-2">
                   Cancelled

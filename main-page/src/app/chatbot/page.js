@@ -46,7 +46,7 @@ export default function Page() {
         messages: [
           {
             role: 'user',
-            content: `Carbon emission control related give discription about :${inputText}. Give ans in only 200 words.`,
+            content: `${inputText}. Give ans in 200 words or less.`,
           },
         ],
       };

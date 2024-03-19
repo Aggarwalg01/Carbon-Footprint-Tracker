@@ -1,4 +1,4 @@
-import {db} from '../../firestore/firebase'
+import {db} from '../firestore/firebase'
 import { collection,doc, query, where, onSnapshot } from "firebase/firestore";
 const calculateTotalData = (user,category,setValue) => {
   console.log(user)

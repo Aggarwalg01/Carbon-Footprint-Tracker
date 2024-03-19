@@ -135,13 +135,13 @@ export default function Page() {
               </div>
               <div className="h-full w-full bg-[#e0dfce] rounded-xl flex items-center justify-evenly">
                 <span className="text-xs bg-white rounded-lg p-1 px-2">
-                <Link href="/dashboard">Dashboard</Link>
-                </span>
-                <span className="text-xs bg-white rounded-lg p-1 px-2">
                 <Link href="/user-profile">User Profile</Link>
                 </span>
                 <span className="text-xs bg-white rounded-lg p-1 px-2">
-                  Cancelled
+                <Link href="/feedback">Feedback</Link>
+                </span>
+                <span className="text-xs bg-white rounded-lg p-1 px-2">
+                <Link href="/faq">FAQ</Link>
                 </span>
               </div>
             </div>
@@ -180,10 +180,10 @@ export default function Page() {
               </div>
               <div className="h-full w-full bg-white rounded-xl p-4">
                 <div className="bg-[#e0dfce] h-full w-full rounded-lg flex items-center justify-evenly text-sm p-1 text-center">
-                  <span className="w-full cursor-pointer">Dashboard</span>
-                  <span className="bg-white w-full h-full flex items-center justify-center rounded-lg cursor-pointer">
-                    Fill Data
-                  </span>
+                <Link href="/dashboard" className="w-full cursor-pointer">Dashboard</Link>
+                  <Link className="bg-white w-full h-full flex items-center justify-center rounded-lg cursor-pointer" href='/chatbot'>
+                    Chatbot
+                  </Link>
                 </div>
               </div>
             </div>

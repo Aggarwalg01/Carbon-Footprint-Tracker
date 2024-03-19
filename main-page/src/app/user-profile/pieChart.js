@@ -3,7 +3,7 @@ import { Pie } from 'react-chartjs-2';
 import { useUser } from '@clerk/nextjs';
 import {db} from '../../firestore/firebase'
 import { collection,doc, query, where, onSnapshot } from "firebase/firestore";
-import calculateTotalData from './calculateData'
+import calculateTotalData from '../../components/calculateData'
 
 export default function PieChart() {
 const { user} = useUser();

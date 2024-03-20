@@ -1,8 +1,11 @@
 "use client"
 import "../index.css";
 import Category from "../categories/UpdateCategory.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FootprintDiv from "./footprintDiv";
+import {calculateFootprintPercentage} from '../../components/firebase_operations'
+import { useUser } from "@clerk/nextjs";
+
 export default function Dashboard() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -10,7 +13,8 @@ export default function Dashboard() {
   const [calculatedElectricity, setCalculatedElectricity] = useState('');
   const [calculatedTravel, setCalculatedTravel] = useState('');
   const [calculatedFood, setCalculatedFood] = useState('');
-
+  const [percentage,setPercentage] = useState(0);
+ const {user} = useUser();
   const openModal = (category) => {
     setSelectedCategory(category);
     setModalOpen(true);
@@ -40,7 +44,11 @@ export default function Dashboard() {
         }
     }
 
-  
+  useEffect(() => {
+    if(user != undefined) {
+      calculateFootprintPercentage(user?.fullName,setPercentage);
+    }
+  },[])
 
   return (
     <div className="bg-slate-900 p-10">
@@ -50,11 +58,11 @@ export default function Dashboard() {
           <div className="basis-1/2">
             <div className="flex flex-row">
             <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
-  <button onClick={() => openModal('travel')}>Vehicle</button>
+  <button onClick={() => openModal('vehicle')}>Vehicle</button>
   {calculatedVehicle && <div style={{ justifyContent: "center" , fontSize: "20px"}}>{calculatedVehicle} kt</div>}
 </div>
 <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
-  <button onClick={() => openModal('food')}>Electricity</button>
+  <button onClick={() => openModal('electricity')}>Electricity</button>
   {calculatedElectricity && <div style={{ justifyContent: "center" , fontSize: "20px"}}>{calculatedElectricity} kt</div>}
 </div>
             </div>
@@ -79,7 +87,7 @@ export default function Dashboard() {
           </div>
           <div className="basis-1/2">
             {/*<img src={footprintSvg} alt="Footprint" className="w-full" /> {/* Use footprint.svg */}
-            <FootprintDiv fillPercentage={80} />
+            <FootprintDiv fillPercentage={percentage} />
           </div>
         </div>
       </div>

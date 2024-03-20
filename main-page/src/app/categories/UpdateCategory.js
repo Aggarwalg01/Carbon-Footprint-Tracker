@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { setDoc, doc } from "firebase/firestore";
 import { db } from '../../firestore/firebase';
 import { useUser } from '@clerk/nextjs';
+import {inputCarbonData } from '../../components/firebase_operations'
 
 export default function Category({ isOpen, onClose, category,  setCalculatedValue }) {
     const {user }= useUser();
@@ -38,17 +39,7 @@ export default function Category({ isOpen, onClose, category,  setCalculatedValu
                     break;
             }
             setCalculatedValue(val);
-            var date = new Date();
-            const date1 = date.getDate() + '/' + ((date.getMonth()/10).toFixed(0) == 0 ? "0" + date.getMonth() : date.getMonth() )+ '/' + date.getFullYear() 
-            const time = date.getHours() 
-            + ':' + date.getMinutes() 
-            + ":" + date.getSeconds();
-            console.log(typeof(db))
-            setDoc(doc(db, user?.fullName,category), {
-            [date1] : {
-                  [time] : val || null
-                }
-              },{merge: true}).then((res) =>{console.log(res)}).catch((e) => console.log(e));
+            inputCarbonData(category,val,user?.fullName);
             await onClose();
         }).catch((e) => {console.log(e)})
     }

@@ -3,7 +3,7 @@ import { Pie } from 'react-chartjs-2';
 import { useUser } from '@clerk/nextjs';
 import {db} from '../../firestore/firebase'
 import { collection,doc, query, where, onSnapshot } from "firebase/firestore";
-import calculateTotalData from '../../components/calculateData'
+import {calculateTotalData} from '../../components/firebase_operations'
 
 export default function PieChart() {
 const { user} = useUser();
@@ -46,7 +46,6 @@ useEffect(  () =>{
     <button onClick={calculateTotalData}>b</button>
       <h2>Pie Chart</h2>
       {/* <Pie data={data} /> */}
-      {<span>{user?.fullName} {carbonTravel} {carbonElectricity} {carbonFood} {carbonVehicle}</span>}
       <Pie
         data={data}
         options={{

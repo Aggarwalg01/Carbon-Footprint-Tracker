@@ -1,5 +1,5 @@
 "use client";
-import Spinner from "@/components/Spinner";
+import Spinner from "../components/Spinner";
 import Link from 'next/link'
 import {
   ClerkLoaded,
@@ -81,7 +81,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <h3 className="font-semibold">Local Lifestyle?</h3>
+              <Link href="/reclaim" className="font-semibold">Reclaim</Link>
               <span className="text-[#a4b651] font-semibold">Naturally</span>
             </div>
           </div>

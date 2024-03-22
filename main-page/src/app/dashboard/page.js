@@ -3,11 +3,13 @@ import "../index.css";
 import Category from "../categories/UpdateCategory.js";
 import { useEffect, useState } from "react";
 import FootprintDiv from "./footprintDiv";
-import {calculateFootprintPercentage} from '../../components/firebase_operations'
+import {calculateFootprintPercentage,inputCarbonData} from '../../components/firebase_operations'
 import { useUser } from "@clerk/nextjs";
-import { collection } from "firebase/firestore";
+import { collection, doc } from "firebase/firestore";
+import {db} from '../../firestore/firebase'
 
 export default function Dashboard() {
+  var check = true;
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [calculatedVehicle, setCalculatedVehicle] = useState('');
@@ -47,10 +49,10 @@ export default function Dashboard() {
 
   useEffect(() => {
     if(user != undefined) {
-      var check = collection(db,"carbon_data");
-      check.get().then((res) => {
+        if(check) {
+          inputCarbonData("travel",0,user?.fullName,)
+        }
         calculateFootprintPercentage(user?.fullName,setPercentage);
-      }).catch((e) => console.log(e))
      
     }
   },[])

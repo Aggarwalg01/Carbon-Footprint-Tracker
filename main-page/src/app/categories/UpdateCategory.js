@@ -6,17 +6,18 @@ import { inputCarbonData } from '../../components/firebase_operations'
 
 export default function Category({ isOpen, onClose, category, setCalculatedValue }) {
     const { user } = useUser();
-    const [data, setEnergy] = useState(0);
+    const [data, setEnergy] = useState('');
     const [vehicle, setVehicleType] = useState("SmallDieselCar");
 
-    let vehicleTypes = new Map();
-    vehicleTypes.set("Small Diesel Car", "SmallDieselCar");
-    vehicleTypes.set("Small Petrol Car", "SmallPetrolCar");
-    vehicleTypes.set("Small Gas Car", "SmallGasCar");
-    vehicleTypes.set("Large Diesel Car", "LargeDieselCar");
-    vehicleTypes.set("Large Petrol Car", "LargePetrolCar");
-    vehicleTypes.set("Large Gas Car", "LargeGasCar");
-    vehicleTypes.set("Bike", "SmallBike");
+    let vehicleTypes = {
+    "option1": "SmallDieselCar",
+    "option2": "SmallPetrolCar",
+    "option3": "SmallGasCar",
+    "option4": "LargeDieselCar",
+    "option5": "LargePetrolCar",
+    "option6": "LargeGasCar",
+    "option7" : "SmallMotorBike",
+    }
 
     if (!isOpen) return null;
 
@@ -74,7 +75,10 @@ export default function Category({ isOpen, onClose, category, setCalculatedValue
                 break;
 
             case 'vehicle':
-                const vehicleUrl = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromPublicTransit?type=${vehicle}&distance=${data}`
+                console.log(vehicle)
+                console.log(data)
+                const vehicleUrl = `https://carbonfootprint1.p.rapidapi.com/CarbonFootprintFromCarTravel?vehicle=${vehicle}&distance=${data}`
+                console.log(vehicleUrl)
                 const vehicleOptions = {
                     method: 'GET',
                     headers: {
@@ -125,15 +129,15 @@ export default function Category({ isOpen, onClose, category, setCalculatedValue
                 <h2 className="text-2xl text-center text-bold mb-4">Update for today</h2>
                 <form className='text-xl'>
                     {/* <input type="text" hidden={!(category == "vehicle")} onChange={handleVehicleChange} className="text-base" placeholder="Vehicle Type" /><br /> */}
-                    <label for="dropdown" hidden={!(category == "vehicle")}>Vehicle Type : </label>
-                    <select className='px-6 py-1 ml-2 mb-3 rounded-lg' id="dropdown" name="dropdown" hidden={!(category == "vehicle")} onSelect={handleVehicleChange}>
+                    <label htmlFor="dropdown" hidden={!(category == "vehicle")}>Vehicle Type : </label>
+                    <select className='px-6 py-1 ml-2 mb-3 rounded-lg' id="dropdown" name="dropdown" hidden={!(category == "vehicle")} onChange={handleVehicleChange}>
                         <option className="p-4" value="option1">Small Diesel Car</option>
                         <option className="p-4" value="option2">Large Diesel Car</option>
-                        <option className="p-4" value="option1">Small Petrol Car</option>
-                        <option className="p-4" value="option2">Large Petrol Car</option>
-                        <option className="p-4" value="option1">Small Gas Car</option>
-                        <option className="p-4" value="option2">Large Gas Car</option>
-                        <option className="p-4" value="option3">Bike</option>
+                        <option className="p-4" value="option3">Small Petrol Car</option>
+                        <option className="p-4" value="option4">Large Petrol Car</option>
+                        <option className="p-4" value="option5">Small Gas Car</option>
+                        <option className="p-4" value="option6">Large Gas Car</option>
+                        <option className="p-4" value="option7">Bike</option>
                         {/* <option value="option4">Option 4</option> */}
                     </select><br/>
                     <input type="text" onChange={handleInputChange} className="text-base pl-1 py-1 text-xl border" placeholder="Enter the updated value" /><br />

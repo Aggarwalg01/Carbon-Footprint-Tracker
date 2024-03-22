@@ -64,6 +64,7 @@ export default function Dashboard() {
       const data = await response.json();
       setUrl(data[0]);
       setStatusUrl(data[1]);
+      console.log(data[1])
     }).catch(async (error) => {
       console.error('Error fetching data:', error);
     });

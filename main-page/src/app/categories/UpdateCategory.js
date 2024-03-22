@@ -53,7 +53,7 @@ export default function Category({ isOpen, onClose, category,  setCalculatedValu
                 const travelOptions = {
                     method: 'GET',
                     headers: {
-                        'X-RapidAPI-Key': '7112f3b271msh36e3c9c905f726dp1e7e11jsnc2ea975060d8',
+                        'X-RapidAPI-Key': '5f151651f9mshcf83822b9cdd731p115ed3jsnf6193d1677c8',
                         'X-RapidAPI-Host': 'carbonfootprint1.p.rapidapi.com'
                     }
                 };

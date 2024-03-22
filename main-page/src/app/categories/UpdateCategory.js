@@ -7,7 +7,7 @@ import { inputCarbonData } from '../../components/firebase_operations'
 export default function Category({ isOpen, onClose, category, setCalculatedValue }) {
     const { user } = useUser();
     const [data, setEnergy] = useState(0);
-    const [vehicle, setVehicleType] = useState(0);
+    const [vehicle, setVehicleType] = useState("SmallDieselCar");
 
     let vehicleTypes = new Map();
     vehicleTypes.set("Small Diesel Car", "SmallDieselCar");
@@ -21,9 +21,11 @@ export default function Category({ isOpen, onClose, category, setCalculatedValue
     if (!isOpen) return null;
 
     const handleInputChange = (event) => {
+        console.log("called")
         setEnergy(event.target.value);
     };
     const handleVehicleChange = (event) => {
+        console.log("called2")
         console.log(event.target.value);
         console.log(vehicleTypes[event.target.value]);
         setVehicleType(vehicleTypes[event.target.value]);

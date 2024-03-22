@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import FootprintDiv from "./footprintDiv";
 import {calculateFootprintPercentage} from '../../components/firebase_operations'
 import { useUser } from "@clerk/nextjs";
+import { collection } from "firebase/firestore";
 
 export default function Dashboard() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -46,7 +47,11 @@ export default function Dashboard() {
 
   useEffect(() => {
     if(user != undefined) {
-      calculateFootprintPercentage(user?.fullName,setPercentage);
+      var check = collection(db,"carbon_data");
+      check.get().then((res) => {
+        calculateFootprintPercentage(user?.fullName,setPercentage);
+      }).catch((e) => console.log(e))
+     
     }
   },[])
 

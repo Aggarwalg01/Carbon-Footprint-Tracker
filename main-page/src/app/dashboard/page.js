@@ -50,7 +50,11 @@ export default function Dashboard() {
   useEffect(() => {
     if(user != undefined) {
         if(check) {
-          inputCarbonData("travel",0,user?.fullName,)
+          inputCarbonData("travel",0,user?.fullName)
+          inputCarbonData("food",0,user?.fullName,)
+          inputCarbonData("vehicle",0,user?.fullName,)
+          inputCarbonData("electricity",0,user?.fullName,)
+          check = false;
         }
         calculateFootprintPercentage(user?.fullName,setPercentage);
      

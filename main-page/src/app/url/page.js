@@ -104,47 +104,6 @@ app.post('/createProofRequest', async (req, res) => {
   }
 });
 
-
-const requiredValue = 'MOBILE_SUBMITTED';
-
-io.on('connection', (socket) => {
-  console.log('WebSocket connected');
-
-  socket.on('message', async (statusUrl, item) => {
-    try {
-      if (statusUrl == '' || item == '') {
-        throw new Error('Empty statusUrl or item');
-      }
-
-      console.log('Received message from client:', statusUrl);
-      
-      while (true) {
-        try {
-          const response = await fetch(statusUrl);
-          const data = await response.json();
-
-          if (data.session.status === requiredValue) {
-            const result = data.session.proofs[0].extractedParameterValues[providerValues[item]];
-            console.log(result);
-            socket.emit('basicEmit', true, result);
-            break;
-          }
-        } catch (err) {
-          console.log('Error fetching:', err);
-          socket.emit('basicEmit', false, 'Error in fetching');
-        }
-      }
-    } catch (err) {
-      console.error(err);
-      socket.emit('basicEmit', false, err.message);
-    }
-  });
-
-  socket.on('disconnect', () => {
-    console.log('WebSocket disconnected');
-  });
-});
-
 async function pollApi(req,res) {
   const requiredValue = 'MOBILE_SUBMITTED'; 
   // console.log(req.statusUrl)

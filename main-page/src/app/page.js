@@ -60,6 +60,7 @@ export default function Page() {
               </div>
             </div>
             <div>
+            <Link href="/reclaim" className="font-semibold">Reclaim</Link>
               <h3 className="font-semibold">Local Lifestyle?</h3>
               <span className="text-[#a4b651] font-semibold">Naturally</span>
             </div>

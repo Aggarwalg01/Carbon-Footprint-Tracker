@@ -3,7 +3,7 @@ import React , {useEffect, useState}from 'react';
 import "../index.css"
 import UserStats from "./userStats.js";
 import { useUser } from '@clerk/nextjs';
-import {calculateFootprintPercentage} from '../../components/firebase_operations'
+import {calculateFootprintPercentage,inputCarbonData} from '../../components/firebase_operations'
 // import svg file
 import ProfileSvg from "../../../public/man-coloured.svg"
 import PieChart from './pieChart';

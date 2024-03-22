@@ -47,6 +47,7 @@ const calculateMonthlyData =  (user,val,ind,setValue) => {
       querySnapshot.forEach((doc) =>{
         if(doc.id.slice(3,5) == checkVal){
           Object.keys(doc.data()).map((key,index) => {
+            if(doc.data()[key] != null)
             totalEmmitted += doc.data()[key];
           })
           val[ind] = totalEmmitted;

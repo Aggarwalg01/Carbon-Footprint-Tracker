@@ -39,7 +39,11 @@ const calculateMonthlyData =  (user,val,ind,setValue) => {
    console.log(ind)
    if(checkVal.length == 1) checkVal = "0"+checkVal;
    for(let i = 0; i < 4; i++ )  {
+   
     onSnapshot(collection(db,"carbon_data",user,tasks[i]),(querySnapshot) => {
+      if(!querySnapshot.empty) {
+
+      
       querySnapshot.forEach((doc) =>{
         if(doc.id.slice(3,5) == checkVal){
           Object.keys(doc.data()).map((key,index) => {
@@ -52,7 +56,7 @@ const calculateMonthlyData =  (user,val,ind,setValue) => {
         
         console.log(totalEmmitted);
       })
-    })
+    }})
    }  
 }
 

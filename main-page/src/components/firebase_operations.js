@@ -34,7 +34,9 @@ const calculateFootprintPercentage = (user,setValue) => {
 const calculateMonthlyData =  (user,val,ind,setValue) => {
    var totalEmmitted = 0;
    const tasks = ['travel','vehicle','food','electricity'];
+   ind--;
    let checkVal = ind.toString();
+   console.log(ind)
    if(checkVal.length == 1) checkVal = "0"+checkVal;
    for(let i = 0; i < 4; i++ )  {
     onSnapshot(collection(db,"carbon_data",user,tasks[i]),(querySnapshot) => {
@@ -43,7 +45,7 @@ const calculateMonthlyData =  (user,val,ind,setValue) => {
           Object.keys(doc.data()).map((key,index) => {
             totalEmmitted += doc.data()[key];
           })
-          val[ind-1] = totalEmmitted;
+          val[ind] = totalEmmitted;
           console.log(val[i-1]);
           setValue(val);
         }

@@ -4,12 +4,14 @@ const calculateTotalData = (user,category,setValue) => {
   console.log(user)
   var totalEmmitted = 0;
      onSnapshot(collection(db,"carbon_data",user,category), (querySnapshot) => {
+      if(!querySnapshot.empty) {
       querySnapshot.forEach((doc) =>{
+
         Object.keys(doc.data()).map((key,index) => {
           totalEmmitted += doc.data()[key];
         })
         setValue(totalEmmitted)
-      })
+      })}
     });
     console.log(totalEmmitted)
     
@@ -19,7 +21,9 @@ const calculateFootprintPercentage = (user,setValue) => {
   var totalEmmitted = 0;
   const tasks = ['travel','vehicle','food','electricity'];
   for(let i = 0; i < 4; i++ )  {
+    
     onSnapshot(collection(db,"carbon_data",user,tasks[i]),(querySnapshot) => {
+      if(!querySnapshot.empty) {
       querySnapshot.forEach((doc) =>{
           Object.keys(doc.data()).map((key,index) => {
             totalEmmitted += doc.data()[key];
@@ -27,6 +31,7 @@ const calculateFootprintPercentage = (user,setValue) => {
           setValue(totalEmmitted*10);
         console.log(totalEmmitted);
       })
+    }
     })
   };
 }

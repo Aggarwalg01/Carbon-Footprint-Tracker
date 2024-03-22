@@ -9,9 +9,17 @@ import ProfileSvg from "../../../public/man-coloured.svg"
 import PieChart from './pieChart';
 export default function UserProfile() {
     const {user} = useUser()
+    const check = true;
     const [percentage, setPercentage] = useState(0);
     useEffect(()=>{
      if(user != undefined) {
+        if(check) {
+            inputCarbonData("travel",0,user?.fullName)
+            inputCarbonData("food",0,user?.fullName,)
+            inputCarbonData("vehicle",0,user?.fullName,)
+            inputCarbonData("electricity",0,user?.fullName,)
+            check = false;
+          }
         calculateFootprintPercentage(user?.fullName,setPercentage);
         console.log(user?.primaryEmailAddress.emailAddress)
      }

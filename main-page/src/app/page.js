@@ -184,12 +184,12 @@ export default function Page() {
           />
         </div>
 
-        <div className="w-full h-full flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+        <div className="w-full h-full flex bg-[#e8e6d7]  flex-col justify-center items-center rounded-xl relative overflow-hidden">
           {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
           {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
-          {/* <div className="w-3/4 text-center text-4xl">About Us</div> */}
-          <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg">
-            {/* <p className="text-2xl bg-[#b5bf96]">Your personal carbon emissions tracker - Whether you're a conscious consumer looking to minimize your impact or a business aiming to improve sustainability practices, GreenMeter equips you with the tools and knowledge to foster positive change.</p> */}
+          <div className="w-3/4 text-center text-4xl heading font-bold">Motivation</div>
+          <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
+            <p className="text-2xl">The time has past when humankind thought it could selfishly draw on resources. We know now the world is not a commodity. We have to wake up to fierce urgency of the now.</p>
           </div>
         </div>
         </div>
@@ -203,10 +203,10 @@ export default function Page() {
           />
         </div>
 
-        <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+        <div className="w-full h-full bg-[#e0dfce] flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
           {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
           {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
-          <div className="w-3/4 text-center text-4xl z-30">Carbon Footprint Calculation</div>
+          <div className="w-3/4 text-center text-4xl z-30 heading font-bold">Carbon Footprint Calculation</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">
 At GreenMeter, we believe that understanding your carbon footprint is the first step towards making positive environmental changes. By inputting data related to travel, vehicle usage, food consumption, waste generation, water usage, electricity consumption, and more, our platform accurately calculates your total carbon emissions.
@@ -224,10 +224,10 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
           />
         </div>
 
-        <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+        <div className="w-full h-full bg-[#b5bf96] flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
           {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
           {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
-          <div className="w-3/4 text-center text-4xl">Monthly Emission Tracking</div>
+          <div className="w-3/4 text-center text-4xl  heading font-bold">Monthly Emission Tracking</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">We understand the importance of accountability and progress tracking. That's why we maintain detailed records of your monthly carbon emissions. Our tracking system allows you to monitor your progress over time and provides timely alerts if your emissions exceed certain thresholds, helping you stay on track towards your sustainability goals.</p>
           </div>
@@ -243,10 +243,10 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
           />
         </div>
 
-        <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+        <div className="w-full h-full bg-[#e8e6d7] flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
           {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
           {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
-          <div className="w-3/4 text-center text-4xl">Feedback Section</div>
+          <div className="w-3/4 text-center text-4xl heading font-bold">Feedback Section</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">We value your feedback and believe that sharing experiences fosters learning and improvement. Our feedback section provides a platform for users to share their experiences with carbon tracking and offer insights into how it has helped them in their journey towards sustainability. Your feedback helps us continually refine and enhance our platform to better serve you.</p>
           </div>
@@ -262,10 +262,10 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
           />
         </div>
 
-        <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+        <div className="w-full h-full bg-[#e0dfce]  flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
           {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
           {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
-          <div className="w-3/4 text-center text-4xl"> Real-Time Support with Chatbot</div>
+          <div className="w-3/4 text-center text-4xl heading font-bold"> Real-Time Support with Chatbot</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">Got questions about carbon emissions or sustainability? Our chatbot is here to help! Whether you're curious about eco-friendly lifestyle choices, need assistance navigating the app, or have specific inquiries about carbon calculations, our chatbot provides real-time answers and support to help you make informed decisions.</p>
           </div>
@@ -281,10 +281,10 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
           />
         </div>
 
-        <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+        <div className="w-full h-full bg-[#b5bf96] flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
           {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
           {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
-          <div className="w-3/4 text-center text-4xl"> FAQs Section:</div>
+          <div className="w-3/4 text-center text-4xl heading font-bold"> FAQs Section:</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">Have burning questions about carbon emissions and sustainability practices? Check out our comprehensive FAQs section for answers to common queries. From understanding carbon offsetting to tips for reducing your ecological footprint, we've got you covered with informative resources to support your sustainability journey.</p>
           </div>

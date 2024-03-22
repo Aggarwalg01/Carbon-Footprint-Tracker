@@ -6,14 +6,15 @@ import PieChart from "./pieChart.js";
 import BarGraph from "./barGraph.js";
 
 Chart.register(CategoryScale);
+Chart.defaults.font.size = 20;
 
 export default function UserStats() {
     return(
-        <div className="flex">
-            <div className='w-1/2 p-4'>
+        <div>
+            {/* <div className='p-4 place-content-center'>
                 <PieChart />
-            </div>
-            <div className='w-1/2 p-4'>
+            </div> */}
+            <div className=' p-4'>
                 <BarGraph />
             </div>
         </div>

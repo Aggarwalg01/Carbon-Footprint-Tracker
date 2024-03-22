@@ -1,0 +1,6 @@
+.c1{
+    border-radius: 27% 73% 57% 43% / 23% 46% 54% 77% ;
+}
+.about::-webkit-scrollbar{
+    display: none;
+}

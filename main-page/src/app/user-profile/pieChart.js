@@ -42,9 +42,9 @@ useEffect(  () =>{
   };
 
   return (
-    <div>
+    <div style={{width: "450px !important"}} className='place-content-center'>
     <button onClick={calculateTotalData}>b</button>
-      <h2>Pie Chart</h2>
+      {/* <h2>Pie Chart</h2> */}
       {/* <Pie data={data} /> */}
       <Pie
         data={data}
@@ -53,8 +53,14 @@ useEffect(  () =>{
             title: {
               display: true,
               text: "Carbon Emissions Today"
+            },
+            legend: {
+              position: 'right', // Set the legend position to the left
             }
-          }
+          },
+          // responsive: true,
+          // maintainAspectRatio: true,
+          aspectRatio: 300 / 200 
         }}
       />
     </div>

@@ -51,36 +51,36 @@ export default function Dashboard() {
   },[])
 
   return (
-    <div className="bg-slate-900 p-10">
-      <h1 className="text-5xl text-white font-bold py-10">Emission Tracking Dashboard</h1>
-      <div className="bg-white rounded-lg p-5">
+    <div className="bg-[#e8e6d7]">
+      <h1 className="text-5xl text-[#526527] font-bold py-10 text-center">Emission Tracking Dashboard</h1>
+      <div className="bg-[#b5bf96] rounded-lg p-5 mx-10">
         <div className="flex flex-row">
           <div className="basis-1/2">
             <div className="flex flex-row">
-            <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
+            <div className="basis-1/2 bg-[#3c4627] text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
   <button onClick={() => openModal('vehicle')}>Vehicle</button>
   {calculatedVehicle && <div style={{ justifyContent: "center" , fontSize: "20px"}}>{calculatedVehicle} kt</div>}
 </div>
-<div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
+<div className="basis-1/2 bg-white text-black px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
   <button onClick={() => openModal('electricity')}>Electricity</button>
   {calculatedElectricity && <div style={{ justifyContent: "center" , fontSize: "20px"}}>{calculatedElectricity} kt</div>}
 </div>
             </div>
             <div className="flex flex-row">
-            <div className="basis-1/2 bg-gray-800 text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
+            <div className="basis-1/2 bg-white text-black px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
   <button onClick={() => openModal('travel')}>Travel</button>
   {calculatedTravel && <div style={{ justifyContent: "center" , fontSize: "20px"}}>{calculatedTravel} kt</div>}
 </div>
-<div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
+<div className="basis-1/2 bg-[#3c4627] text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
   <button onClick={() => openModal('food')}>Food</button>
   {calculatedFood && <div style={{ justifyContent: "center" , fontSize: "20px"}}>{calculatedFood} kt</div>}
 </div>
 </div>
             <div className="flex flex-row">
-              <div className="basis-1/2 bg-rose-500 px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
+              <div className="basis-1/2 bg-[#3c4627] text-white px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
                 <button onClick={() => openModal('Water')}>Water</button>
               </div>
-              <div className="basis-1/2 bg-gray-800 text-white  px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
+              <div className="basis-1/2 bg-white text-black  px-8 py-20 rounded-lg mt-5 mr-5 font-medium text-3xl flex flex-col items-center">
                 <button onClick={() => openModal('Waste')}>Waste</button>
               </div>
             </div>

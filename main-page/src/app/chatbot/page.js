@@ -3,26 +3,28 @@ import React, { useState } from 'react';
 import './styles.css';
 export default function Page() {
   const [inputText, setInputText] = useState('');
-  const [generatedText, setGeneratedText] = useState('');
+  const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
   const [clicked, setClicked] = useState(false);
-  const [clicked2, setClicked2] = useState(false);
 
   const handleClkImage = async () => {
-    setGeneratedText('');
-    setClicked2(true);
-
+    setClicked(true);
+  
     try {
       const data = await llmFetch(inputText);
       console.log(data);
-
+  
       if (data.code === 200) {
-        setGeneratedText(data.response);
+        setQuestions(prevQuestions => [...prevQuestions, inputText]);
+        setAnswers(prevAnswers => [...prevAnswers, data.response]);
       } else {
         console.error('Error:', data.response);
       }
     } catch (error) {
       console.error('Error:', error);
     }
+  
+    setInputText(''); // Clear the input text
   };
 
   const handleInputChange = (event) => {
@@ -96,8 +98,7 @@ export default function Page() {
             <button onClick={handleClkImage}>Generate</button>
           </div>
         </div>
-       
-      
+
         <div
           className="wrapper mx-10vw white-text overflow-y-scroll"
           style={{
@@ -105,17 +106,16 @@ export default function Page() {
             margin: '0px 10vw',
           }}
         >
-          <div>
-           {clicked2 && (
+          {clicked && (
             <div>
-              {generatedText ? (
-                <p>{generatedText}</p>
-              ) : (
-                <p>Loading...</p>
-              )}
+              {questions.map((question, index) => (
+                <div key={index} className="answer-box">
+                  <p className="question">{question}</p>
+                  <p>{answers[index]}</p>
+                </div>
+              ))}
             </div>
           )}
-          </div>
         </div>
       </div>
     </>

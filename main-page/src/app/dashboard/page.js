@@ -88,6 +88,18 @@ export default function Dashboard() {
           <div className="basis-1/2">
             {/*<img src={footprintSvg} alt="Footprint" className="w-full" /> {/* Use footprint.svg */}
             <FootprintDiv fillPercentage={percentage} />
+            <div className="absolute bottom-0 right-11 mr-5 mb-5">
+            <div className="legend bg-red-500 text-white px-4 py-3 rounded-md mr-3 w-24 text-center">
+  Severe
+</div>
+<div className="legend bg-yellow-500 text-white px-4 py-3 rounded-md mr-3 w-24 text-center">
+  Average
+</div>
+<div className="legend bg-green-500 text-white px-4 py-3 rounded-md w-24 text-center">
+  Good
+</div>
+</div>
+
           </div>
         </div>
       </div>

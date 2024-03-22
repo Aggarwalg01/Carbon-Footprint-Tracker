@@ -59,11 +59,11 @@ export default function Page() {
                 <CiCircleCheck size={25} />
               </div>
             </div>
-            <div>
-            <Link href="/reclaim" className="font-semibold">Reclaim</Link>
+             <div>
+            {/* <Link href="/reclaim" className="font-semibold">Scan QR</Link> */}
               <h3 className="font-semibold">Local Lifestyle?</h3>
               <span className="text-[#a4b651] font-semibold">Naturally</span>
-            </div>
+            </div> 
           </div>
           <div className="bg-white h-full w-[40%] rounded-xl flex-col justify-between p-3 hidden sm:flex">
             <div className="flex items-start justify-end">
@@ -163,6 +163,7 @@ export default function Page() {
                   <Link className="bg-white w-full h-full flex items-center justify-center rounded-lg cursor-pointer" href='/chatbot'>
                     Chatbot
                   </Link>
+                  <Link href="/reclaim" className="w-full cursor-pointer">Scan QR</Link>
                 </div>
               </div>
             </div>

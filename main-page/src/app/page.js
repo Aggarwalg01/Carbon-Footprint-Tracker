@@ -1,6 +1,6 @@
 "use client";
 import Spinner from "../components/Spinner";
-import Link from 'next/link'
+import Link from 'next/link';
 import {
   ClerkLoaded,
   ClerkLoading,
@@ -33,9 +33,9 @@ export default function Page() {
             alt="notfound"
             className="object-cover  w-full h-full opacity-60 rounded-xl"
           />
-          <div className="absolute bottom-2 text-xl text-black ">
+          <div className="absolute text-center top-1/3 left-1/3 text-2xl text-black">
             <p className="flex flex-col">
-              <span className="font-medium text-2xl text-[#000000]">
+              <span className="font-bold text-3xl text-[#000000] text-center">
                 Reduce
               </span>
               Reuse, Rethink
@@ -45,27 +45,29 @@ export default function Page() {
       </div>
       <div className="flex items-center justify-center gap-6 lg:flex-row flex-col">
         <div className="rounded-xl lg:w-[65%] w-full h-72 bg-[#b5bf96] md:p-10 sm:p-8 p-6 flex gap-6">
-          <div className="bg-white h-full sm:w-[60%] w-full rounded-xl flex flex-col justify-between p-3">
-            <div className="flex items-start justify-between">
-              <div className="relative h-16 w-16 ">
+          <div className="h-full sm:w-[100%] w-full rounded-xl flex flex-col justify-between p-3">
+            <p className="text-4xl text-center heading font-bold">About Us</p>
+            <span className="text-3xl text-center">Welcome to GreenMeter, your partner in measuring and reducing your carbon footprint. Here's how we're making a difference:</span>
+            {/* <div className="flex items-start justify-between"> */}
+              {/* <div className="relative h-16 w-16 ">
                 <Image
                   src="/avatar.webp"
                   alt="notfound"
                   fill
                   className="rounded-xl"
                 />
-              </div>
-              <div>
+              </div> */}
+              {/* <div>
                 <CiCircleCheck size={25} />
-              </div>
-            </div>
-             <div>
+              </div> */}
+            {/* </div> */}
+             {/* <div> */}
             {/* <Link href="/reclaim" className="font-semibold">Scan QR</Link> */}
-              <h3 className="font-semibold">Local Lifestyle?</h3>
-              <span className="text-[#a4b651] font-semibold">Naturally</span>
-            </div> 
+              {/* <h3 className="font-semibold">Local Lifestyle?</h3> */}
+              {/* <span className="text-[#a4b651] font-semibold">Naturally</span> */}
+            {/* </div>  */}
           </div>
-          <div className="bg-white h-full w-[40%] rounded-xl flex-col justify-between p-3 hidden sm:flex">
+          {/* <div className="bg-white h-full w-[40%] rounded-xl flex-col justify-between p-3 hidden sm:flex">
             <div className="flex items-start justify-end">
               <div>
                 <CiHeart size={25} />
@@ -75,14 +77,14 @@ export default function Page() {
               <h3 className="font-semibold">Love the ground</h3>
               <span className="text-[#a4b651] font-semibold">you walk</span>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="rounded-xl lg:w-[45%] w-full sm:w-5/6 h-72 flex flex-col items-center justify-center gap-6">
           <div className="flex items-center gap-6 h-full w-full">
-            <div className=" w-[40%] h-44 rounded-xl sm:block hidden ">
+            {/* <div className=" w-[40%] h-44 rounded-xl sm:block hidden ">
               <img className="w-4/5 ml-3 h-4/5" src={'./logo.png'}/>
               <h3 className="w-full text-xl text-center text-green-700">GreenMeter</h3>
-            </div>
+            </div> */}
             <div className=" h-full w-full flex flex-col gap-4 justify-between">
               <div className="rounded-xl bg-white h-full w-full flex items-center p-2 gap-3">
                 <div className="w-10 h-10 flex items-center justify-center">
@@ -126,14 +128,14 @@ export default function Page() {
             </div>
           </div>
           <div className="flex items-center gap-6 h-full w-full">
-            <div className="bg-[#e0dfce] w-[40%] h-full rounded-xl p-10 relative sm:block hidden">
+            {/* <div className="bg-[#e0dfce] w-[40%] h-full rounded-xl p-10 relative sm:block hidden">
               <Image
                 src={"/avatar.webp"}
                 alt="not found"
                 fill
                 className="rounded-xl object-cover"
               />
-            </div>
+            </div> */}
             <div className=" h-full w-full flex flex-col gap-4 justify-between">
               <div className="h-full w-full flex items-center justify-center bg-[#e0dfce]">
                 <ClerkLoading>
@@ -171,7 +173,7 @@ export default function Page() {
         </div>
       </div>
       <section className="text-center h-full w-full flex flex-col items-center justify-center">
-      <div className="w-full h-[50vh] overflow-scroll about">
+      <div className="w-full h-[300vh] overflow-scroll about bg-[#e0dfce] p-5 rounded-lg">
       <div className=" w-full h-[50vh] flex justify-around items-center mb-5">  
         <div className="h-[50vh] relative w-full">
           <Image
@@ -182,12 +184,12 @@ export default function Page() {
           />
         </div>
 
-        <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
-          <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div>
-          <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div>
-          <div className="w-3/4 text-center text-4xl">About Us</div>
-          <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
-            <p className="text-2xl">Welcome to GreenMeter, your partner in measuring and reducing your carbon footprint. Here's how we're making a difference:</p>
+        <div className="w-full h-full flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
+          {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
+          {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
+          {/* <div className="w-3/4 text-center text-4xl">About Us</div> */}
+          <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg">
+            {/* <p className="text-2xl bg-[#b5bf96]">Your personal carbon emissions tracker - Whether you're a conscious consumer looking to minimize your impact or a business aiming to improve sustainability practices, GreenMeter equips you with the tools and knowledge to foster positive change.</p> */}
           </div>
         </div>
         </div>
@@ -202,8 +204,8 @@ export default function Page() {
         </div>
 
         <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
-          <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div>
-          <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div>
+          {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
+          {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
           <div className="w-3/4 text-center text-4xl z-30">Carbon Footprint Calculation</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">
@@ -223,8 +225,8 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
         </div>
 
         <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
-          <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div>
-          <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div>
+          {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
+          {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
           <div className="w-3/4 text-center text-4xl">Monthly Emission Tracking</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">We understand the importance of accountability and progress tracking. That's why we maintain detailed records of your monthly carbon emissions. Our tracking system allows you to monitor your progress over time and provides timely alerts if your emissions exceed certain thresholds, helping you stay on track towards your sustainability goals.</p>
@@ -242,8 +244,8 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
         </div>
 
         <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
-          <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div>
-          <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div>
+          {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
+          {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
           <div className="w-3/4 text-center text-4xl">Feedback Section</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">We value your feedback and believe that sharing experiences fosters learning and improvement. Our feedback section provides a platform for users to share their experiences with carbon tracking and offer insights into how it has helped them in their journey towards sustainability. Your feedback helps us continually refine and enhance our platform to better serve you.</p>
@@ -261,8 +263,8 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
         </div>
 
         <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
-          <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div>
-          <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div>
+          {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
+          {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
           <div className="w-3/4 text-center text-4xl"> Real-Time Support with Chatbot</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">Got questions about carbon emissions or sustainability? Our chatbot is here to help! Whether you're curious about eco-friendly lifestyle choices, need assistance navigating the app, or have specific inquiries about carbon calculations, our chatbot provides real-time answers and support to help you make informed decisions.</p>
@@ -280,8 +282,8 @@ At GreenMeter, we believe that understanding your carbon footprint is the first 
         </div>
 
         <div className="w-full h-full bg-gray-100 flex flex-col justify-center items-center rounded-xl relative overflow-hidden">
-          <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div>
-          <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div>
+          {/* <div className=" w-72 h-72 c1 bg-green-700 absolute -left-10 -top-10"></div> */}
+          {/* <div className=" w-72 h-72 c1 rounded-full bg-green-700 absolute -right-14 -bottom-10"></div> */}
           <div className="w-3/4 text-center text-4xl"> FAQs Section:</div>
           <div className="w-3/4 h-2/3 z-10 flex justify-center items-center  rounded-lg border-2 border-green-700">
             <p className="text-2xl">Have burning questions about carbon emissions and sustainability practices? Check out our comprehensive FAQs section for answers to common queries. From understanding carbon offsetting to tips for reducing your ecological footprint, we've got you covered with informative resources to support your sustainability journey.</p>

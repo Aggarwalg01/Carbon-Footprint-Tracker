@@ -1,11 +1,11 @@
-require('dotenv').config();
+require('dotenv').config({path: require('find-config')('.env')});
 const express = require('express');
 
 const bodyParser = require('body-parser');
 const { Reclaim } = require('@reclaimprotocol/js-sdk');
 const http = require('http');
 const socketIo = require('socket.io');
-const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const app = express();
 const server = http.createServer(app);
@@ -68,7 +68,7 @@ app.post('/createProofRequest', async (req, res) => {
       }
 
       const reclaimClient = new Reclaim.ProofRequest(
-        "0xAEb1C95937B6F950d25D5e070306b7D44447Ba7F",
+        process.env.APP_ID,
         sessionId
       );
 
@@ -84,7 +84,7 @@ app.post('/createProofRequest', async (req, res) => {
       await reclaimClient.buildProofRequest(providerIds[provider]);
       reclaimClient.setSignature(
         await reclaimClient.generateSignature(
-          "0x33eea3fbda5b62921e37a3752d28105663894398068fe5b626d62bfe076b83f8"
+          process.env.APP_SECRET_KEY
         )
       );
 

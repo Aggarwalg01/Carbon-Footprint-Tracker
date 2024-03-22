@@ -9,7 +9,7 @@ import ProfileSvg from "../../../public/man-coloured.svg"
 import PieChart from './pieChart';
 export default function UserProfile() {
     const {user} = useUser()
-    const check = true;
+    var check = true;
     const [percentage, setPercentage] = useState(0);
     useEffect(()=>{
      if(user != undefined) {

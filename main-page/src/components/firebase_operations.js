@@ -26,9 +26,9 @@ const calculateFootprintPercentage = (user,setValue) => {
       if(!querySnapshot.empty) {
       querySnapshot.forEach((doc) =>{
           Object.keys(doc.data()).map((key,index) => {
-            totalEmmitted += doc.data()[key];
+            totalEmmitted += (doc.data()[key])*1;
           })
-          setValue(totalEmmitted*10);
+          setValue((totalEmmitted*10));
         console.log(totalEmmitted);
       })
     }

@@ -4,7 +4,7 @@ import {calculateMonthlyData} from '../../components/firebase_operations'
 import { useUser } from '@clerk/nextjs';
 
 const BarGraph = () => {
-    const [dataArray,setDataArray] = useState([0,0,0,0,0,0])
+    const [dataArray,setDataArray] = useState([10,30,410,43,11,0])
     const {user} = useUser()
     useEffect( () => {
      if(user != undefined) {

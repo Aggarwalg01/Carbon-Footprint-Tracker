@@ -3,14 +3,15 @@ import React , {useEffect, useState}from 'react';
 import "../index.css"
 import UserStats from "./userStats.js";
 import { useUser } from '@clerk/nextjs';
-import {calculateFootprintPercentage} from '../../components/firebase_operations'
+import {calculateFootprintPercentage,inputCarbonData} from '../../components/firebase_operations'
 // import svg file
 import ProfileSvg from "../../../public/man-coloured.svg"
 import PieChart from './pieChart';
 export default function UserProfile() {
     const {user} = useUser()
     var check = true;
-    const [percentage, setPercentage] = useState(0);
+    var [percentage, setPercentage] = useState(0);
+    percentage = Number(percentage);
     useEffect(()=>{
      if(user != undefined) {
         if(check) {
@@ -52,7 +53,7 @@ export default function UserProfile() {
                             </tr>
                             <tr>
                                 <td className="text-left">Total Footprint: </td>
-                                <td className="text-right">{percentage} %</td>
+                                <td className="text-right">{Number(percentage)} %</td>
                             </tr>
                         </tbody>
                     </table>
